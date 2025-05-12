@@ -1,0 +1,50 @@
+.rateBox{
+ padding: 15px;
+ color: var(--text__title);
+
+}
+.rateBox h4{
+ font-weight: bold;
+ 
+}
+.rateBox__analystic{
+ align-items: center;
+ justify-content: space-evenly;
+}
+.rateBox__analystic__count{
+ padding:  13px 0px 13px 10px; 
+}
+.rateBox__bar{
+ position: relative;
+}
+.rateBox__svg__progress{
+ position: absolute;
+    top: 47%;
+    left: 52%;
+    font-weight: lighter;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 13px;
+}
+#rateBox__svg circle {
+ /* stroke-dashoffset: 0; */
+ transition: stroke-dashoffset 1s linear;
+ stroke: #7a8195;
+ stroke-width: 0.2em;
+}
+
+#rateBox__svg #bar {
+ /* stroke: #FF9F1E; */
+ transform: rotate(270deg);
+      transform-box: view-box;
+      transform-origin: center;
+}
+.arrow{
+ font-size: 18px;
+}
+.arrow--green{
+ color: #09ce53;
+}
+.arrow--red{
+ color: #ee2e66;
+}

@@ -1,0 +1,60 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "dependencies": {
+    "@ckeditor/ckeditor5-alignment": "^41.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^38.0.1",
+    "@ckeditor/ckeditor5-react": "^6.0.0",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@tanstack/react-query": "^4.3.4",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "chart.js": "^3.8.0",
+    "ckeditor5-image-remove-event-callback-plugin": "^1.2.0",
+    "framer-motion": "^11.3.21",
+    "html-react-parser": "^4.2.1",
+    "html-to-image": "^1.11.13",
+    "install": "^0.13.0",
+    "json-server": "^0.17.0",
+    "npm": "^9.6.7",
+    "react": "^18.2.0",
+    "react-calendar": "^3.9.0",
+    "react-chartjs-2": "^4.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.2",
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "serve": "json-server --watch db.json --port 3000"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
