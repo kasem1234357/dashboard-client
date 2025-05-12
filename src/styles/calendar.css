@@ -1,0 +1,111 @@
+.calendar{
+ padding: 10px;
+ width: 100%;
+ min-height: 100vh;
+ flex-direction: column;
+}
+.calendar__year{
+   position: relative;
+}
+.calendar__year__select{
+   position: absolute;
+   top: 25px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 100%;
+}
+.calendar__navbar{
+   color: var(--text__title);
+ padding-bottom: 10px;
+}
+.calendar__box{
+ width: 100%;
+ height: 100%;
+ border-radius: 4px;
+ flex-direction: column;
+}
+.days--name{
+   width: 100%;
+   padding: 20px 11px;
+   background: var(--item__bg2);
+}
+.days--name div{
+   flex: 1;
+   padding-left: 4px;
+   color: var(--text__title);
+}
+.days--box{
+   width: 100%;
+   flex-wrap: wrap;
+   height: 100%;
+
+}
+.days--box .days{
+    width: calc(100% / 7);
+    height: calc(100% / 5);
+    cursor: pointer;
+    border: 2px solid var(--item__bg2);
+    border-top: none;
+    border-left: none;
+    padding: 10px;
+    color: #7a8195;
+    position: relative;
+}
+.days--box .days:hover,.days--box .days.active-reminder{
+   background: var(--item__bg2);
+}
+.active-reminder-day {
+   background: #2f78ff;
+   width: 30px;
+   height: 30px;
+   display: grid;
+   place-items: center;
+   color: #fff;
+   border-radius: 100%;
+}
+.prev--days,.next--days{
+   opacity: 0.5;
+}
+.reminder--color h4{
+   color: var(--text__title);
+}
+.end--progress--calendar{
+   position: absolute;
+   width: 90%;
+   height: 5px;
+   border-radius: 20px;
+   left: 5%;
+   background: #2f78ff;
+   bottom: 20px;
+}
+.triangle{
+   width: 0;
+   height: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+   border-color: #2f78ff;
+    border-style: solid;
+    border-width: 10px;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+.calendar  select {
+   margin-top: 10px;
+   width: 150px;
+   background: var(--popup__item__bg);
+   padding: 5px;
+   color: var(--text__title);
+   outline: none;
+   font-size: 17px;
+   border: none;
+   box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);
+}
+.calendar__navbar{
+   justify-content: space-between;
+   align-items: center;
+}
+.calendar__navbar h2{
+   letter-spacing: 2px;
+   font-size: 30px;
+}
