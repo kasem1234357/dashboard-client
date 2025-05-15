@@ -6,20 +6,33 @@ export const handleKeyPress = (event,navigate) => {
     const tasknumber = store.getState().user.taskNumber
     const productNumber = store.getState().user.productNumber
     if(event.ctrlKey){
-        event.preventDefault()
+       
         if(event.shiftKey){
             if(event.keyCode === 80){
+                 event.preventDefault()
                 navigate(`crud/product/${productNumber +1}`,{ state: { dataInfo: null, type: "New" }})
             }
         }
         switch (event.keyCode) {
-             case 71:navigate(`tasks/task/${tasknumber +1}`,{ state: { dataInfo:null, type:"New",state:'To do'} })
+             
+             case 71:{
+                event.preventDefault()
+                navigate(`tasks/task/${tasknumber +1}`,{ state: { dataInfo:null, type:"New",state:'To do'} })}
                 break;
-              case 68:store.dispatch(updateDarkMode(true))
+              case 68:{
+                event.preventDefault()
+                store.dispatch(updateDarkMode(true))
+            }
               break;
-              case 76:store.dispatch(updateDarkMode(false))
+              case 76:{
+                event.preventDefault()
+                store.dispatch(updateDarkMode(false))
+            }
               break;
-              case 121:store.dispatch(toggleNotification())
+              case 121:{
+                event.preventDefault()
+                store.dispatch(toggleNotification())
+            }
             default:return null
         }
         

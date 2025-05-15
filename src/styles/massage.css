@@ -188,8 +188,48 @@ button.send-massage-btn {
     margin: 5px;
     border-radius: 50%;
     padding: 5px;
+    position: relative;
+    z-index: 10;
     margin-left: auto;
 }
 button.send-massage-btn:hover{
     background: #3e5186;
+}
+.switcher {
+    padding: 4px;
+    gap: 10px;
+    width: fit-content;
+    background: #2c3250;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #3e5186;
+}
+.switcher div {
+    height: 100%;
+    padding: 7px 10px;
+    cursor: pointer;
+    /* padding-right: 0; */  
+    border-radius: 3px;
+}
+.switcher_active {
+height: 100%;
+    padding: 7px 10px;
+    /* padding-right: 0; */
+    background: #0db8d3;
+    border-radius: 3px;
+    color: #fff;
+
+
+
+
+}
+.new .ck.ck-reset.ck-editor.ck-rounded-corners{
+    height: 100%;
+}
+.new .ck.ck-editor__main{
+    height: 100%;
+}
+.new .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
+    height: calc(100% - 50px)
+   
 }

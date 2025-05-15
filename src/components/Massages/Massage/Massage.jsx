@@ -1,9 +1,12 @@
 import React from 'react'
 import './massage.css'
-function Massage({data,setCurrentMassage}) {
+function Massage({data,setCurrentMassage,setMsgType}) {
   const {active,sender,img,title,desc,color} = data
   return (
-    <div className={`massage--box ${active && 'massage--active'} flex`} onClick={()=>setCurrentMassage(data)}>
+    <div className={`massage--box ${active && 'massage--active'} flex`} onClick={()=>{
+      setMsgType('reply')
+      setCurrentMassage(data)
+      }}>
     <div className="Massage__image" >
       <img src={`./images/${img}`} alt="" srcSet="" style={{
         filter: `drop-shadow(0px 0px 5px ${color} )`

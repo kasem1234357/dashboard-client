@@ -1,6 +1,9 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
+
 import { massageData } from "../components/Data/massageData";
 import {
+  Add,
+  AddProductIcon,
   BackArrow,
   Delete,
   Download,
@@ -12,8 +15,7 @@ import Massage from "../components/Massages/Massage/Massage";
 import MassegeArea from "../components/Massages/MassegeArea/MassegeArea";
 import MassegeLabel from "../components/Massages/MassegeArea/MassegeLabel";
 //=====================================================//
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 import { motion } from "framer-motion"
 
 
@@ -23,35 +25,19 @@ import "../styles/massage.css";
 import { convertToPDF } from "../utils/PDF_function";
 import { filter } from "../utils/FilterFn";
 import {  config_animateX } from "../configs/motionConfig";
+import MassegeSenderForm from "../components/Massages/MassegeSenderForm";
 
 function MassagePage() {
   const [msgImgData, setImgData] = useState([]);
-  function uploadAdapter(loader) {
-    return {
-      upload: () => {
-        return new Promise((resolve, reject) => {
-          var formData = new FormData();
-          formData.append("name", "Ali Hamza");
-          loader.file.then((file) => {
-            formData.append("files", file);
-            setImgData((prev) => [...prev, file]);
-            console.log(file);
-          });
-        });
-      },
-    };
-  }
-  function uploadPlugin(editor) {
-    editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
-      return uploadAdapter(loader);
-    };
-  }
+  
+
   const [showList, setShowList] = useState(true);
-  const [senderMassageData, setSenderMassageData] = useState("");
+
   const [printContent, setPrintContent] = useState("");
   const [msgData, setMsgData] = useState(massageData);
+  const [MsgType, setMsgType] = useState('new');
   const [filterData, setFilterData] = useState([]);
-  const [currentMassage, setCurrentMassage] = useState(massageData[0]);
+  const [currentMassage, setCurrentMassage] = useState(null);
   const inputRef = useRef("");
   const removeMassage = (date) => {
     const newData = msgData.filter((data) => data.date !== date);
@@ -62,6 +48,56 @@ function MassagePage() {
   useEffect(() => {
     setFilterData(msgData);
   }, [msgData]);
+  // const cld = new Cloudinary({
+  //   cloud: {
+  //     cloudName:"doda4kgzp",
+  //   },
+  // });
+
+  // // Upload Widget Configuration
+  // const uwConfig = {
+  //   cloudName:"doda4kgzp",
+  //   uploadPreset:"test@345",
+  //   // Uncomment and modify as needed:
+  //   // cropping: true,
+  //   // showAdvancedOptions: true,
+  //   // sources: ['local', 'url'],
+  //   // multiple: false,
+  //   // folder: 'user_images',
+  //   // tags: ['users', 'profile'],
+  //   // context: { alt: 'user_uploaded' },
+  //   // clientAllowedFormats: ['images'],
+  //   // maxImageFileSize: 2000000,
+  //   // maxImageWidth: 2000,
+  //   // theme: 'purple',
+  // };
+
+    //  const initializeUploadWidget = () => {
+    //   if (window.cloudinary ) {
+    //     // Create upload widget
+    //     uploadWidgetRef.current = window.cloudinary.createUploadWidget(
+    //       uwConfig,
+    //       (error, result) => {
+    //         if (!error && result && result.event === 'success') {
+    //           console.log('Upload successful:', result.info);
+    //          // setPublicId(result.info.public_id);
+    //         }
+    //       }
+    //     );
+
+    //     // Add click event to open widget
+       
+    //       if (uploadWidgetRef.current) {
+    //         uploadWidgetRef.current.open();
+    //       }
+       
+
+       
+    //     // Cleanup
+    //     ;
+    //   }
+    // };
+
   return (
     <Suspense
       fallback={
@@ -74,7 +110,7 @@ function MassagePage() {
       <motion.div 
          {...config_animateX}
        className="massage flex">
-        <div className="massage__navbar flex">
+        <div className="massage__navbar flex " style={{justifyContent:'space-between', alignItems:'center'}}>
           <div className="massage__navbar__search">
             <input
               ref={inputRef}
@@ -85,6 +121,16 @@ function MassagePage() {
               }}
             />
           </div>
+          <div style={{
+            cursor:'pointer',
+            marginRight:'20px'
+          }} onClick={()=>{
+            setCurrentMassage(null)
+            setMsgType('new')
+          }}>
+             <AddProductIcon width='25px' color="#f7f7f7" stroke="#d7d7d7" strokeWidth="2px"/>
+          </div>
+         
         </div>
         <div className="massage__content flex">
           <div
@@ -127,6 +173,7 @@ function MassagePage() {
                   key={index}
                   data={massage}
                   setCurrentMassage={setCurrentMassage}
+                  setMsgType={setMsgType}
                 />
               ))}
             </div>
@@ -158,36 +205,11 @@ function MassagePage() {
               </div>
             </div>
             <div className="massage__viewBox__massegeBox ">
-              <MassegeLabel {...currentMassage} />
+             {currentMassage && <>
+             <MassegeLabel {...currentMassage} />
               <MassegeArea setPrintContent={setPrintContent} />
-              <CKEditor
-                editor={ClassicEditor}
-                config={{
-                  extraPlugins: [uploadPlugin],
-                }}
-                data="<p>write your message here</p>"
-                onReady={(editor) => {
-                  // You can store the "editor" and use when it is needed
-                  console.log("Editor is ready to use!", editor);
-                }}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  console.log({ event, editor, data });
-                  console.log(data);
-                  setSenderMassageData(data);
-                }}
-                onBlur={(event, editor) => {
-                  console.log("Blur.", editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log("Focus.", editor);
-                }}
-              />
-              {senderMassageData}
-              <button className="send-massage-btn">
-                {" "}
-                <Send color={"#0db8d3"} />{" "}
-              </button>
+             </> }
+              <MassegeSenderForm type={MsgType} data={currentMassage}/>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ const instance = axios.create({
     withCredentials:true,
 
     
-});
+});    
 // instance.defaults.timeout = 10000;
 // Where you would set stuff like your 'Authorization' header, etc ...
 
