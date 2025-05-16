@@ -208,8 +208,11 @@ function MassegeSenderForm({ type, data = null }) {
     try {
       await toast.promise(
         protectRoute().handle("post", `/api/users/msg/send`, {
-          audience: "ALL_USERS",
+          audience: msgType === 'general'?"ALL_USERS":"PRIVATE",
           content:senderMassageData,
+          email : userData?.email || null,
+          receiverModel : userData?.email ? "DashUser" : null,
+          
           title:title
         }),toastMessage(),
         toastConfig
@@ -246,7 +249,9 @@ function MassegeSenderForm({ type, data = null }) {
             className="form--box form__title "
             style={{ marginBottom: "10px", flex: 1 }}
           >
-            <input type="text" placeholder="put user email" />
+            <input type="text" placeholder="put user email" onChange={(e)=>{
+              setUserData(prev => ({...prev,email:e.target.value}))
+            }} />
           </div>
         )}
         <div
