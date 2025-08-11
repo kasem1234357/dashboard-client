@@ -27,19 +27,19 @@ body{
     
    }
    .light{
-    --text__title:#0c0d14;
-    --primary:#fdf8e1;
-    --bg__area__color:#f6d540;
-    --popup__item__bg:#f9dc5c;
-    --secondary:#fae588;
-    --bg-main:#fcefb4;
-    --bg__2:#fcefb4;
-    --item__bg2:#f9dc5c;
-    --popup__box__bg:var(--secondary);
-    --task__board__bg:#fae588;
-    --primary__text:#5c5e74;
-    --task__item__bg:#fcefb4;
-    --highlight__text:#000;
+        --text__title: #0c0d14;
+    --primary: #F7F9FC;
+    --bg__area__color: #FAFAFA;
+    --popup__item__bg: #e3e9e9;
+    --secondary: #FFFFFF;
+    --bg-main: #fcefb4;
+    --bg__2: #fcefb4;
+    --item__bg2: #FAFAFA;
+    --popup__box__bg: var(--secondary);
+    --task__board__bg: #fff;
+    --primary__text: #5c5e74;
+    --task__item__bg: #fcefb4;
+    --highlight__text: #000;
 }
 .dark{
     --text__title:#d7d7d7;
